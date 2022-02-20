@@ -1,23 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from "react";
 
-function App() {
+import AddUserForm from "./components/AddUserForm";
+import UserTable from "./components/table/UserTable";
+
+
+const App = () => {
+
+  const userData = [{id: '', name: '', username: ''}];
+  const [users, setUsers] = useState(userData);
+  const [editing, setEditinh] = useState(false);
+
+  const addUser = (user) => {
+     user.id = users.length + 1
+     setUsers([...users, user]);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <div className="row">
+            <div className="col-6">
+                <AddUserForm addUser={addUser}/>
+            </div>
+            <div className="col-6">
+                <UserTable users={users}/>
+            </div>
+        </div>
     </div>
   );
 }
