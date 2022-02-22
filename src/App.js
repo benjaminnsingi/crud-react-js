@@ -7,7 +7,9 @@ import EditUserForm from "./components/EditUserForm";
 
 const App = () => {
 
-  const userData = [{id: null, name: '', username: ''}];
+  const userData = [
+      {id: 1, name: 'Benjamin', username: 'Benjamin77'}
+  ];
   const initialFormState = { id: null, name: '', username: '' }
 
   const [users, setUsers] = useState(userData);
@@ -19,9 +21,14 @@ const App = () => {
      setUsers([...users, user]);
   };
 
+  const deleteUser = (id) => {
+      setEditing(false);
+      setUsers(users.filter(user => user.id !== id))
+  }
+
   const updateUser = (id, updateUser) => {
       setEditing(false)
-      setUsers(users.map(user => (user.id === id ? updateUser : user)))
+      setUsers(users.filter(user => (user.id === id ? updateUser : user)))
   }
 
   const editRow = (user) => {
@@ -50,7 +57,7 @@ const App = () => {
                 )}
             </div>
             <div className="col-6">
-                <UserTable users={users} editRow={editRow}/>
+                <UserTable users={users} editRow={editRow} deleteUser={deleteUser}/>
             </div>
         </div>
     </div>

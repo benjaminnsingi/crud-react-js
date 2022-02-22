@@ -22,7 +22,7 @@ const UserTable = (props) => {
                              <td>{user.username}</td>
                              <td>
                                  <button className="btn btn-primary" onClick={() => props.editRow(user)}>Modifier</button>
-                                 <button className="btn btn-danger">Supprimer</button>
+                                 <button className="btn btn-danger" onClick={() => props.deleteUser(user.id)}>Supprimer</button>
                              </td>
                          </tr>
                      ))

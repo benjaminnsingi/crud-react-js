@@ -14,7 +14,7 @@ const EditUserForm = (props) => {
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        props.updateUser(user.id, user)
+        props.updateUser(user.id, user);
     };
 
     const handleInputChange = (event) => {
@@ -34,7 +34,7 @@ const EditUserForm = (props) => {
                 <Form.Group className="mb-3" controlId="formBasicPassword">
                     <Form.Control type="text" name="username" value={user.username} placeholder="Pseudo" onChange={handleInputChange}/>
                 </Form.Group>
-                <Button variant="primary" type="submit" onClick={() => props.setEditing(false)}>
+                <Button variant="primary"  onClick={() => props.setEditing(false)}>
                     Modifier
                 </Button>
             </Form>
